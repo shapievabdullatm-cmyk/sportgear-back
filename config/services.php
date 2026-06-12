@@ -51,4 +51,9 @@ return [
         'base_url' => env('RUSSIAN_POST_BASE_URL', 'https://otpravka-api.pochta.ru'),
     ],
 
+    'yandex' => [
+        'geocoder_key' => env('YANDEX_GEOCODER_KEY'),
+        'referer'      => env('YANDEX_REFERER', 'http://localhost:3000'),
+    ],
+
 ];

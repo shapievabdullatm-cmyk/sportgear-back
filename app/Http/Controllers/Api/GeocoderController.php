@@ -12,14 +12,14 @@ class GeocoderController extends Controller
     private function http()
     {
         return Http::withHeaders([
-            'Referer' => env('YANDEX_REFERER', 'http://localhost:3000'),
+            'Referer' => config('services.yandex.referer'),
         ])->timeout(5);
     }
 
     private function geocoderRequest(string $query, int $results = 1): array
     {
         $response = $this->http()->get('https://geocode-maps.yandex.ru/1.x/', [
-            'apikey'  => env('YANDEX_GEOCODER_KEY'),
+            'apikey'  => config('services.yandex.geocoder_key'),
             'geocode' => $query,
             'format'  => 'json',
             'results' => $results,
