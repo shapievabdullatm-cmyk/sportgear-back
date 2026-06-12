@@ -22,6 +22,7 @@ class ParamSeeder extends Seeder
                 'is_filterable' => true,
                 'is_searchable' => false,
                 'is_comparable' => true,
+                'is_size' => true,
                 'sort' => 10,
             ],
             [
@@ -32,6 +33,7 @@ class ParamSeeder extends Seeder
                 'is_filterable' => true,
                 'is_searchable' => false,
                 'is_comparable' => false,
+                'label' => 'color',
                 'sort' => 20,
             ],
             [
