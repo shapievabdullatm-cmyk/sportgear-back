@@ -19,11 +19,14 @@ class OrderController extends Controller
 
     public function index(Request $request): JsonResponse
     {
+        $perPage = (int) $request->get('per_page', 10);
+        $perPage = max(1, min($perPage, 50));
+
         $orders = $request->user()
             ->orders()
             ->with(['items'])
             ->orderByDesc('created_at')
-            ->paginate($request->get('per_page', 20));
+            ->paginate($perPage);
 
         return response()->json($orders);
     }
