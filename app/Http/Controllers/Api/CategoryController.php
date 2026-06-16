@@ -41,6 +41,14 @@ class CategoryController extends Controller
         // Применяем фильтры
         $this->applyFilters($query, $request, $categoryIds);
 
+        // Сортировка
+        $sort = $request->input('sort');
+        if ($sort === 'price_asc') {
+            $query->orderBy('price', 'asc')->orderBy('id');
+        } elseif ($sort === 'price_desc') {
+            $query->orderBy('price', 'desc')->orderBy('id');
+        }
+
         // Пагинация
         $perPage = $request->integer('per_page', 20);
         $products = $query->paginate($perPage);
@@ -266,7 +274,7 @@ class CategoryController extends Controller
         // Парсим фильтры из query параметров
         foreach ($request->query() as $key => $value) {
             // Пропускаем служебные параметры
-            if (in_array($key, ['price_min', 'price_max', 'page', 'per_page'])) {
+            if (in_array($key, ['price_min', 'price_max', 'page', 'per_page', 'sort'])) {
                 continue;
             }
 
