@@ -32,5 +32,9 @@ class DatabaseSeeder extends Seeder
         $this->call(WarehouseSeeder::class);
         $this->call(ShopSeeder::class);
         $this->call(AddressSeeder::class);
+
+        // Продукты и коллекции
+        $this->call(ProductSeeder::class);
+        $this->call(ProductCollectionSeeder::class);
     }
 }
